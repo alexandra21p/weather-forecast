@@ -1,0 +1,159 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f3f3f3;
+}
+
+.container {
+  max-width: 900px;
+  margin: 10px auto;
+  /*display: flex;
+  flex-direction: column;*/
+}
+
+.photo-container {
+  color: white;
+  /*display: flex;
+  justify-content: space-between;*/
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-image: url("london.jpg");
+  background-size: 100% 140%;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.item {
+  float: left;
+  padding: 30px;
+}
+
+.city-button {
+  margin: 30px 30px 0 0;
+  width: 180px;
+  float: right;
+  border-radius: 25px;
+  padding: 10px 23px;
+  background-color: rgba(243,243,243, 0.4);
+  vertical-align: top;
+}
+
+h4 {
+  display: inline-block;
+}
+.fa-angle-down {
+  font-size: 21px;
+  float: right;
+}
+
+/*  LIST OF CITIES */
+
+ul {
+  display: none;
+  margin-top: 5px;
+  list-style-type: none;
+  text-align: right;
+}
+
+ul li {
+  font-weight: lighter;
+  width: 90%;
+  padding: 7px 10px;
+  border-bottom: 1px solid silver;
+}
+
+ul li:hover {
+  background-color: #fff;
+  color: #24292e;
+}
+
+.big-info, h1, h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+}
+
+.big-info {
+  display: inline-block;
+  width: 30%;
+  clear: left;
+  float:left;
+  margin-left: 30px;
+}
+.condition {
+
+}
+
+.wi {
+  margin-right: 10px;
+  color: #fed045;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+h3 {
+  color: #4bb9fb;
+  letter-spacing: 1px;
+}
+
+.week-container {
+  background-color: white;
+  display:flex;
+  justify-content: space-between;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 6px;
+}
+
+.week-item, .first-week-item {
+  margin: 20px 0;
+  height: 70px;
+  border-right: 1px solid #f1f1f1;
+  color: grey;
+  flex: 1;
+}
+
+.week-item {
+  font-size: 15px;
+  color: #cecece;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blue {
+  color: #4bb9fb;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-right: 0;
+}
+
+.first-week-item {
+  flex: 3;
+  padding-left: 30px;
+  height: 80px;
+}
+
+.big-icon {
+  font-size: 38px;
+  /*margin-top: 5px;*/
+}
+
+.left {
+  margin: 5px;
+  display:inline-block;
+}
+
+h2 {
+  font-size: 28px;
+}
