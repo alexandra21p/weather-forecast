@@ -25,7 +25,7 @@ btn.addEventListener("click", toggleCityList);
 
 function toggleCityList() {
   let propValue = window.getComputedStyle(cityList, null).getPropertyValue("display");
-  console.log(propValue);
+
   if (propValue === "block") {
     cityList.style.display = 'none';
   }
@@ -36,18 +36,17 @@ function toggleCityList() {
 
 cityList.addEventListener('click', chooseCity, false);
 function chooseCity(e) {
-  console.log(e.target, e.target.innerHTML);
+
   let getCity = cities.filter((elem) => elem.name === e.target.innerHTML);
-  console.log(getCity);
+
   let background = document.querySelector('.photo-container');
-  console.log(background);
+
   background.style.backgroundImage = `url('${getCity[0].url}')`;
   let cityName = document.querySelector('h4');
   cityName.innerHTML = getCity[0].name;
 
   // display the weather info for corresponding info
   let elems = document.querySelectorAll('.week-item');
-  console.log(elems);
   for (elem of elems) {
     elem.outerHTML = '';
   }
@@ -69,20 +68,17 @@ function showInfoForCity(city) {
     .then(
       function(response) {
         if (response.status !== 200) {
-          console.log("BAD");
+          alert("Could not process request.");
           return;
         }
         response.json().then(function(data) {
 
-          console.log(data.city.name);
-          console.log(data.list);
           let format;
           let degrees = document.querySelector('h1');
           let weatherCondition = document.querySelector('.condition');
 
           const currentDay = data.list[0].dt_txt.substring(8,10); // e.g. "08"
           let info = getAverageInfoForDay(currentDay, data.list);
-          console.log(info);
 
           // main weather info shown on screen
           weatherCondition.innerHTML = '';
@@ -98,7 +94,6 @@ function showInfoForCity(city) {
             format = info.averageWeather;
           }
           newIcon.className = `wi wi-day-${format.toLowerCase()}`;
-          console.log(newIcon);
           weatherCondition.appendChild(newIcon);
           weatherCondition.innerHTML += format;
 
@@ -156,7 +151,6 @@ function showInfoForCity(city) {
               }
               else {
                 let firstThreeLetters = getDayOfWeek(date).substring(0,3);
-                console.log(date, getDayOfWeek(date), firstThreeLetters);
                 dayElement.innerHTML = firstThreeLetters;
               }
               weekItem.appendChild(dayElement);
@@ -184,12 +178,10 @@ function showInfoForCity(city) {
               for(let i = 0; i < infoNextDay.filterDay.length; i++) {
                 data.list.shift();
               }
-
-
           }
 
-          });
-        }
+        });
+      }
   )
 }
 
@@ -200,15 +192,11 @@ function getAverageInfoForDay(day, list) {
     let getDay = elem.dt_txt.substring(8,10);
     return getDay === day;
   });
-  console.log(filterDay);
 
   let temp = filterDay.reduce( (acc, curr) => acc + curr.main.temp_max, 0);
-  console.log(temp);
   let averageTemperature = temp / filterDay.length;
-  console.log(averageTemperature);
 
   let weatherList = filterDay.map((e) => { return e.weather[0].main});
-  console.log(weatherList);
   let averageWeather = getMostOccurrences(weatherList);
 
   return {
