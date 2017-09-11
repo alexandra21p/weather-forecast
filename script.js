@@ -46,6 +46,12 @@ function chooseCity(e) {
   cityName.innerHTML = getCity[0].name;
 
   // display the weather info for corresponding info
+  let elems = document.querySelectorAll('.week-item');
+  console.log(elems);
+  for (elem of elems) {
+    elem.outerHTML = '';
+  }
+
   showInfoForCity(e.target.innerHTML);
 
   // repopulate the city list
@@ -67,6 +73,7 @@ function showInfoForCity(city) {
           return;
         }
         response.json().then(function(data) {
+
           console.log(data.city.name);
           console.log(data.list);
           let format;
@@ -98,15 +105,11 @@ function showInfoForCity(city) {
           // bottom left for current day
           let parent = document.querySelector('.first-week-item');
           let child = document.querySelector('.left');
-          // if (child.textContent !== '') {
-          //   child.textContent = '';
-          // }
-          console.log("IMPORTANRT STUFF:", document.querySelector('.big-icon') === null);
+
           if (document.querySelector('.big-icon') !== null) {
             document.querySelector('.big-icon').outerHTML = '';
           }
           let newChild = document.createElement('i');
-          //let newChild = document.querySelector('.big-icon');
           if (info.averageWeather === "Clouds") {
             format = info.averageWeather.replace("s", "y");
           }
@@ -122,7 +125,12 @@ function showInfoForCity(city) {
           let degreesBottom = document.querySelector('h2');
           if (degreesBottom.innerHTML !== '') { degreesBottom.innerHTML = ''; }
           degreesBottom.innerHTML = `${Math.round(info.averageTemperature)}&deg;`;
+
+          if (document.querySelector('.bottom-weather') !== null) {
+            document.querySelector('.bottom-weather').outerHTML = '';
+          }
           let weatherBottom = document.createElement('p');
+          weatherBottom.className = 'bottom-weather';
           weatherBottom.innerHTML = format;
           child.appendChild(weatherBottom);
 
@@ -135,10 +143,8 @@ function showInfoForCity(city) {
               let nextWeekDay = data.list[0].dt_txt.substring(8,10); // get the day e.g. "09"
               let infoNextDay = getAverageInfoForDay(nextWeekDay, data.list);
 
-
               // render the elements on page
               let date = data.list[0].dt_txt.substring(0,10);
-
 
               let weekItem = document.createElement('div');
               weekItem.className = 'week-item';
@@ -173,6 +179,7 @@ function showInfoForCity(city) {
 
               let parentElem = document.querySelector('.week-container');
               parentElem.appendChild(weekItem);
+
               // remove the info about the previous day
               for(let i = 0; i < infoNextDay.filterDay.length; i++) {
                 data.list.shift();
