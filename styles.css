@@ -26,7 +26,7 @@ body {
   justify-content: space-between;*/
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background-image: url("london.jpg");
+  background-image: url("clujnapoca.jpg");
   background-size: 100% 140%;
   background-repeat: no-repeat;
   height: 350px;
@@ -62,6 +62,10 @@ ul {
   margin-top: 5px;
   list-style-type: none;
   text-align: right;
+}
+
+.visible {
+  display: block;
 }
 
 ul li {
